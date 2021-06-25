@@ -27,10 +27,10 @@ class vehicle
         	int gear_position;
         
 	public:
-		virtual bool change_acceleration(int acceleration_speed) = 0;
+		virtual bool change_acceleration(const int acceleration_speed) = 0;
 		virtual int current_gear_position() = 0;
-		virtual bool change_gear_position(int gear_num) = 0;
-		virtual bool change_steer_direction(float degrees,int direction) = 0;
+		virtual bool change_gear_position(const int gear_num) = 0;
+		virtual bool change_steer_direction(const float degrees,int direction) = 0;
 		virtual void vehicle_type() = 0;
 };
 
@@ -119,4 +119,6 @@ int main()
 	std::cout<<v.current_gear_position()<<std::endl;	
 	return 0;
 }
+
+
 
