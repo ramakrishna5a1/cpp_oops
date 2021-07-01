@@ -36,6 +36,13 @@ class vehicle
 
 class car : public vehicle
 {
+	public:
+		car()
+		{
+			num_of_wheels = 4;
+			gear_position = gears::neutral;
+		}
+
 	virtual bool change_acceleration(const int acceleration) override
 	{
 		if(gear_position == gears::neutral)
@@ -112,11 +119,22 @@ class lorry : protected vehicle
 
 int main()
 {
-   	vehicle *veh_car = new car(); 
+	/*
+	 * Here memory is allocated on Heap for car class and that memory reference is holding by the stack variable 
+	 * which is a pointer variable
+	 * */
+
+	vehicle *veh_car = new car();
 	veh_car->change_gear_position(10);
-	
+	std::cout<<"size of car object: "<<sizeof(*veh_car)<<std::endl;	
+	/*
+	 *
+	 * */
 	vehicle &v = *veh_car;
 	std::cout<<v.current_gear_position()<<std::endl;	
+	
+	
+	//std::cout<<"SIZE of reference variable: "<<sizeof()
 	return 0;
 }
 
