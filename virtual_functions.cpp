@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 namespace gears
 {
@@ -14,6 +15,11 @@ namespace gears
 	}
 }
 
+namespace steer_direction
+{
+	const int left = -1;
+	const int right = 1;
+}
 
 namespace acceleration
 {
@@ -25,7 +31,8 @@ class vehicle
 	protected:
 		int num_of_wheels;
         	int gear_position;
-        
+        	float steer_position;
+		
 	public:
 		virtual bool change_acceleration(const int acceleration_speed) = 0;
 		virtual int current_gear_position() = 0;
@@ -41,6 +48,7 @@ class car : public vehicle
 		{
 			num_of_wheels = 4;
 			gear_position = gears::neutral;
+			steer_position = 0;
 		}
 
 	virtual bool change_acceleration(const int acceleration) override
@@ -90,6 +98,7 @@ class car : public vehicle
 	{
 		if(gear_position != gears::neutral)
 		{
+			steer_position = steer_position + (float)(degrees * direction);
 			return true;
 		}
 		else
@@ -126,15 +135,7 @@ int main()
 
 	vehicle *veh_car = new car();
 	veh_car->change_gear_position(10);
-	std::cout<<"size of car object: "<<sizeof(*veh_car)<<std::endl;	
-	/*
-	 *
-	 * */
-	vehicle &v = *veh_car;
-	std::cout<<v.current_gear_position()<<std::endl;	
 	
-	
-	//std::cout<<"SIZE of reference variable: "<<sizeof()
 	return 0;
 }
 
