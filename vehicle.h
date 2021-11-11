@@ -20,13 +20,11 @@ namespace steer_direction
 
 namespace acceleration
 {
-
 }
 
 
 class vehicle
 {
-
         protected:
                 int num_of_wheels;
                 int gear_position;
