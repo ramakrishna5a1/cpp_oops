@@ -1,39 +1,13 @@
 #include "vehicle.h"
 #include <iostream>
 
-namespace gears
-{
-	const int neutral = -1;
-	namespace car
-	{
-		const int max_gears = 5;
-	}
-
-	namespace lorry
-	{
-		const int max_gears = 6;
-	}
-}
-
-namespace steer_direction
-{
-	const int left = -1;
-	const int right = 1;
-}
-
-namespace acceleration
-{
-	
-}
 
 class car : public vehicle
 {
 	public:
-		car()
+		car(int num_of_wheels) : vehicle(num_of_wheels)
 		{
-			num_of_wheels = 4;
-			gear_position = gears::neutral;
-			steer_position = 0;
+	
 		}
 
 	virtual bool change_acceleration(const int acceleration) override
@@ -117,7 +91,7 @@ int main()
 	 * which is a pointer variable
 	 * */
 
-	vehicle *veh_car = new car();
+	vehicle *veh_car = new car(6);
 	veh_car->change_gear_position(10);
 	
 	return 0;
